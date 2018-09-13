@@ -99,7 +99,15 @@ fs.file-max=655350"
 
 #"安装系统工具"
 yum install -y gcc gcc-c++ make cmake autoconf bzip2 bzip2-devel curl openssl openssl-devel rsync gd zip perl unzip
-
+#安装开发包组#
+echo "Install Development tools(It will be a moment,wait......)"
+yum groupinstall -y "Development tools" &> /dev/null
+yum groupinstall -y "Server Platform Development" &> /dev/null
+yum groupinstall -y "Desktop Platform Development" &> /dev/null
+yum groupinstall -y "chinese-support" &>/dev/null
+for I in bind-utils lrzsz wget gcc gcc-c++ vim htop ;do
+	yum install -y $I 
+	done 
 #重启服务
 #ssh
 if [ "$VERSION" == "centos6" ]; then
