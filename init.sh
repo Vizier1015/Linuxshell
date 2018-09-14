@@ -34,9 +34,9 @@ yum makecache
 #更改ulimit参数
 if [ "`cat /etc/security/limits.conf | grep 'soft nproc 65535'`" = "" ]; then
 cat  >> /etc/security/limits.conf << EOF
-* soft nproc 65535
-* hard nproc 65535
-* soft nofile 65535
+* soft nproc 65535       可打开的文件描述符的最大数 （软限制）
+* hard nproc 65535       
+* soft nofile 65535      单个用户可用的最大进程数 
 * hard nofile 65535
 EOF
 echo "ulimit -SHn 65535" >> /etc/profile
