@@ -14,7 +14,7 @@ mysqldump='/usr/local/mysql/bin/mysqldump'
 bakuser='root'
 passwd='123456'
 bakdir='/data/backup'
-remote_dir='rsync://47.100.190.116/mysqlbackup'
+remote_dir='root@47.100.190.116:mysqlbackup/'
 d1=`date +%F`
 d2=`date +%d`
 
@@ -25,7 +25,7 @@ echo "mysql backup begin at `date`"
 
 # 对所有数据库进行遍历
 for db in testsql1 testsql2 testsql3 testsql4 testsql5;do
-	$mysqldump -u$bakuser -p$passwd $db >$bakdir-$d1.sql
+	$mysqldump -u$bakuser -p$passwd -h 47.100.109.116 $db >$bakdir-$d1.sql
 done
 
 #对1天前sql文件进行压缩
