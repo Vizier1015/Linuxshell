@@ -9,11 +9,12 @@ mail_postfix = '163.com'
 
 
 def sendmail(to_list, subject, content):
-    msg = MIMEText(content, 'plain', 'utf-8')
-	me = "zabbix"+"<"+mail_user+"@"+mail_postfix+">"
+	msg = MIMEText(content, 'plain', 'utf-8')
+	me = "zabbix" + "<" + mail_user + "@" + mail_postfix + ">"
 	msg['Subject'] = subject
 	msg['Form'] = me
 	msg['To'] = to_list
+
 	try:
 		s = smtplib.SMTP()
 		s.connect(mail_host)
