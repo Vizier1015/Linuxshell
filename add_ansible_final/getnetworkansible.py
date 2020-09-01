@@ -59,7 +59,7 @@ def get_local_ip():
 def add_ansible_host(myip_prefix):
     ss = get_ip(myip_prefix)
     for hostip in ss:
-        os.system("sed -i '28i 172.20.10.{}' /etc/ansible/hosts".format(hostip))
+        os.system("sed -i '28i {}' /etc/ansible/hosts".format(hostip))
 
 
 if __name__ == "__main__":
