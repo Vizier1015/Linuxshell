@@ -1,0 +1,26 @@
+- hosts: cps-server
+  gather_facts: false
+  remote_user: root
+  tasks:
+    - name: copy source code
+      copy: src=/opt/ansible_yaml_file/zabbix_change/change_configs.py dest=/opt/devops/
+    - name: copy 2
+      copy: src=/opt/ansible_yaml_file/zabbix_change/zabbix_agentd.conf dest=/opt/devops/
+    - name: copy 3
+      copy: src=/opt/ansible_yaml_file/zabbix_change/configs.py dest=/opt/devops/
+    - name: copy 4
+      copy: src=/opt/ansible_yaml_file/zabbix_change/check_service_type.py dest=/opt/devops/
+    - name: copy agent file
+      copy: src=/opt/devops_scripts/zabbix-agent-4.4.3-1.x86_64.rpm dest=/opt
+    - name: install agent
+      shell: rpm -ivh /opt/zabbix-agent-4.4.3-1.x86_64.rpm
+    - name: copy basic.conf
+      copy: src=/opt/ansible_yaml_file/zabbix_change/basic.conf dest=/opt/zabbix-agent4.4.3/conf/zabbix_agentd
+    - name: copy basic.py
+      copy: src=/opt/ansible_yaml_file/zabbix_change/basic.py dest=/opt/devops_test/
+    - name: install psutil
+      shell: pip3 install psutil
+    - name: change basic.conf
+      shell: cd /opt/zabbix-agent4.4.3/conf/zabbix_agentd && chown zabbix:zabbix basic.conf 
+    - name: exec_python
+      shell: cd /opt/devops && python3 change_configs.py
