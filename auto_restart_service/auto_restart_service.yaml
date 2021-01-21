@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  remote_user: root
+  tasks:
+#     - name: copy py code
+#       copy: src=/opt/ansible_yaml_file/auto_restart_service/auto_restart_service.py dest=/opt/devops_test
+#     - name: crontab shell
+#       cron: minute=*/1 name="exec auto shell" job="cd /opt/devops_test && python3 auto_restart_service.py"
+     - name: crontab rm logs
+       cron: hour=23 day=*/35 name="rm logs" job="cd /opt/devops_test && rm -f vbi.log"
