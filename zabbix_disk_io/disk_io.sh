@@ -1,12 +1,4 @@
 #!/bin/bash
-############################################################
-# $Name:         disk_discovery.sh
-# $Function:     DISK DISCOVERY
-# $Author:       Xiaoliu.liu 1377133225@qq.com
-# $organization: Xiaoliu.liu
-# $Create Date:  2019/3/17
-# $Description:  Monitor DISK DISCOVERY
-############################################################
 
 Device=$1
 DISK=$2
