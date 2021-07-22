@@ -21,8 +21,9 @@ case $1 in
 		result=`netstat -an | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}' | grep -w "LISTEN" |cut -d" " -f2`
 		echo $result
 		;;
-	*)
-	
+	*) 
+
 	echo "Usage:$0(TIME_WAIT|ESTABLISHED|LISTEN)"
 	;;
-esac
+esac	
+	
